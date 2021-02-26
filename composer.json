@@ -1,0 +1,17 @@
+{
+    "name": "reneroboter/coding-challenge",
+    "description": "A little plugin for the coding challenge at axel springer",
+    "type": "wordpress-plugin",
+    "authors": [
+        {
+            "name": "René Backhaus",
+            "email": "rene.backhaus@posteo.de"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "RenéRoboter\\CodingChallenge\\": "src/"
+        }
+    }
+}
