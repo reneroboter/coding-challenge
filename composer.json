@@ -8,7 +8,27 @@
             "email": "rene.backhaus@posteo.de"
         }
     ],
-    "require": {},
+    "repositories": [
+        {
+            "type": "composer",
+            "url" : "https://wpackagist.org"
+        },
+        {
+            "type":"composer",
+            "url":"https://wpackagist.org",
+            "only": [
+                "wpackagist-plugin/*",
+                "wpackagist-theme/*"
+            ]
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:reneroboter/coding-challenge.git"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.0"
+    },
     "autoload": {
         "psr-4": {
             "RenéRoboter\\CodingChallenge\\": "src/"

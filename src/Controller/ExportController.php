@@ -5,22 +5,42 @@ declare(strict_types=1);
 
 namespace RenéRoboter\CodingChallenge\Controller;
 
-use WP_Query;
-
-class ExportController
+class ExportController extends AbstractController
 {
     public function export(): string
     {
-        $args = [
-            'post_type' => 'book',
-            'numberposts' => -1,
-            'post_status' => 'any',
-        ];
-        $query = new WP_Query($args);
-        $books = $query->get_posts();
-        if (!$books) {
-            $books = [];
+        if (isset($_POST['export_trigger_submit'])) {
+            do_action('init');
         }
-        return \json_encode($books);
+
+        return $this->twig->render('export.html.twig');
+    }
+
+    public function doExport(): void
+    {
+        if (isset($_POST['export_trigger_submit'])) {
+            $arguments = [
+                'post_type' => 'book',
+                'numberposts' => -1,
+                'post_status' => 'any',
+            ];
+            $posts = get_posts($arguments);
+            $books = [];
+            foreach ($posts as $post) {
+                $books[] = [
+                    'title' => $post->post_title,
+                    'description' => $post->post_content,
+                ];
+            }
+            $json = wp_json_encode($books);
+            header('Content-Description: File Transfer');
+            header('Content-Disposition: attachment; filename=books.json');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header("Content-Type: text/plain");
+            echo $json;
+            exit();
+        }
     }
 }

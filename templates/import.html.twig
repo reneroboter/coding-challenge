@@ -1,0 +1,17 @@
+<h2> Import books </h2>
+{% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error.message }}
+    </div>
+{% endif %}
+{% if isImported %}
+    <div class="alert alert-success" role="alert">
+        Books are successfully imported
+    </div>
+{% endif %}
+<form method="post" enctype="multipart/form-data">
+    <input type='file' id='import_book' name='import_book'></input>
+    <p class="submit">
+        <input type="submit" id="import_submit" class="button button-primary" value="Import">
+    </p>
+</form>
