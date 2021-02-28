@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Coding Challenge
  * Plugin URI: https://github.com/reneroboter/coding-challenge
- * Description: A little plugin for the coding challenge at axel springer
+ * Description: A little plugin for the coding challenge at axel springer 📚
  * Version: 1.0
  * Author: René Backhaus
  * Author URI: https://rene-backhaus.de
